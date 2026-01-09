@@ -4,5 +4,8 @@ Currently, I am following the tutorial on this web blog https://robertheaton.com
 and ideally will be working towards my own progressions. While I am following the verbal instructions on the tutorial, the code will be my own.
 
 
-# 1/8/2026
-Initializing Git repository
+## 1/8/2026
+-Initialized Git repository
+-Started on early game function
+-Can render the board in the command line
+-Asks for player input for moves
