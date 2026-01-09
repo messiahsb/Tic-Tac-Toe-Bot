@@ -70,11 +70,15 @@ def get_move(board):
 #check if move is valid
 
 #make move
-def make_move(move, board):
-  board[move-1] = "X"
+def make_move(move, board, player):
+  if player == PLAYER_1:
+     board[move-1] = "X"
+  else:
+     board[move-1] = "O"
+
   return board
 
-make_move(get_move(a_board), a_board)
+make_move(get_move(a_board), a_board, PLAYER_1)
 print(draw_board(a_board))
 
 #define how to calculate if a win or a draw has been played
