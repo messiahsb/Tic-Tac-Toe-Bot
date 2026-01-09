@@ -4,7 +4,7 @@ empty_board = [None, None, None, None, None, None, None, None, None]
 PLAYER_1 = "X"
 PLAYER_2 = "X"
 
-new_board = ["X", None, None, None, "X", None, None, "O", None]
+a_board = ["X", None, None, None, "X", None, None, "O", None]
 
 #draw board
 def new_board():
@@ -53,10 +53,16 @@ def draw_board(board):
 #define how turns will be played
 
 #getting player input
-def get_move():
+def get_move(board):
+  
   print("Hello Player 2(O's), please Choose your move on an Empty square: ")
-  print(draw_board(empty_board))
-  player_move = input("Enter a number of where you would like to play: ")
+  print(draw_board(board))
+  player_move = int(input("Enter a number of where you would like to play: "))
+  
+  if player_move < 1 or player_move > 9:
+     print("Invalid move! Please enter a new one")
+     player_move = get_move(board)
+
   return int(player_move)
 
 
@@ -64,12 +70,12 @@ def get_move():
 #check if move is valid
 
 #make move
-# def make_move(move):
-#    new_board[move] = "X"
-#    return new_board
+def make_move(move, board):
+  board[move-1] = "X"
+  return board
 
-# make_move(get_move())
-# print(draw_board(new_board))
+make_move(get_move(a_board), a_board)
+print(draw_board(a_board))
 
 #define how to calculate if a win or a draw has been played
 
