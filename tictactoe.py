@@ -1,8 +1,8 @@
 #initialize empty board
 empty_board = [None, None, None, None, None, None, None, None, None]
 
-PLAYER_1 = "X"
-PLAYER_2 = "X"
+PLAYER_1 = 0
+PLAYER_2 = 1
 
 a_board = ["X", None, None, None, "X", None, None, "O", None]
 
@@ -36,10 +36,24 @@ def draw_board(board):
 
     return draw
 
-#print(draw_board(empty_board))
-
 #define game loop
-#   while game is not over continue
+
+def game_loop():
+  game_board = empty_board
+  print(draw_board(game_board))
+  current_player = 0b0
+  #   while game is not over continue
+  while True:
+    print(f"Player {current_player +1} please make your move!")
+    move = get_move()
+    while not move_valid(move, game_board):
+      move = get_move()
+
+    game_board = make_move(move, game_board, current_player)
+    print(draw_board(game_board))
+    current_player^=1
+
+    
 
 #   select a square to make your move
 #   redraw board
@@ -53,10 +67,11 @@ def draw_board(board):
 #define how turns will be played
 
 #getting player input
-def get_move(board):
+def get_move():
   
-  print("Hello Player 2(O's), please Choose your move on an Empty square: ")
-  print(draw_board(board))
+  #MOVE THESE TOO LINE TO THE MAIN LOOP FUNTION WHEN CONSTRUCTED, PRINT AT THE CHANGE OF A TURN
+  # print("Hello Player 2(O's), please Choose your move on an Empty square: ")
+  # print(draw_board(board))
   player_move = int(input("Enter a number of where you would like to play: "))
   
   return int(player_move)
@@ -64,10 +79,29 @@ def get_move(board):
 
 
 #check if move is valid
+def move_valid(move, board):
+    #changed some of the logic to loop in make move, this function now purely checks validity
+   # while is_valid is False:
+
+    is_valid = True
+    if move < 1 or move > 9:
+      print("Invalid move! Please enter a new one")
+      # move = int(input("Enter a number of where you would like to play: "))
+      is_valid = False
+    elif board[move-1]:
+      print(f"This spot is taken by {board[move-1]}, please choose a new one!")
+      #move = int(input("Enter a number of where you would like to play: "))
+      is_valid = False
+    #add statement to check if is integer
+    return is_valid
 
 #make move
 def make_move(move, board, player):
-  move = move_valid(move, board)
+
+  # can move this into the main loop after initialization
+  # while not move_valid(move, board):
+  #    move = get_move(board)
+
   if player == PLAYER_1:
      board[move-1] = "X"
   else:
@@ -75,25 +109,10 @@ def make_move(move, board, player):
 
   return board
 
-def move_valid(move, board):
-    is_valid = False
-    while is_valid is False:
-      is_valid = True
-      if move < 1 or move > 9:
-        print("Invalid move! Please enter a new one")
-        move = int(input("Enter a number of where you would like to play: "))
-        is_valid = False
-      elif board[move-1]:
-        print(f"This spot is taken by {board[move-1]}, please choose a new one!")
-        move = int(input("Enter a number of where you would like to play: "))
-        is_valid = False
-
-    return move
-
    
-   
-make_move(get_move(a_board), a_board, PLAYER_1)
-print(draw_board(a_board))
+# make_move(get_move(a_board), a_board, PLAYER_1)
+# print(draw_board(a_board))
+game_loop()
 
 #define how to calculate if a win or a draw has been played
 
