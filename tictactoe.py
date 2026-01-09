@@ -59,10 +59,6 @@ def get_move(board):
   print(draw_board(board))
   player_move = int(input("Enter a number of where you would like to play: "))
   
-  if player_move < 1 or player_move > 9:
-     print("Invalid move! Please enter a new one")
-     player_move = get_move(board)
-
   return int(player_move)
 
 
@@ -71,6 +67,7 @@ def get_move(board):
 
 #make move
 def make_move(move, board, player):
+  move = move_valid(move, board)
   if player == PLAYER_1:
      board[move-1] = "X"
   else:
@@ -78,6 +75,23 @@ def make_move(move, board, player):
 
   return board
 
+def move_valid(move, board):
+    is_valid = False
+    while is_valid is False:
+      is_valid = True
+      if move < 1 or move > 9:
+        print("Invalid move! Please enter a new one")
+        move = int(input("Enter a number of where you would like to play: "))
+        is_valid = False
+      elif board[move-1]:
+        print(f"This spot is taken by {board[move-1]}, please choose a new one!")
+        move = int(input("Enter a number of where you would like to play: "))
+        is_valid = False
+
+    return move
+
+   
+   
 make_move(get_move(a_board), a_board, PLAYER_1)
 print(draw_board(a_board))
 
