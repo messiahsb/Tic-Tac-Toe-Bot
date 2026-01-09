@@ -5,17 +5,17 @@ and ideally will be working towards my own progressions. While I am following th
 
 
 ## 1/8/2026
--Initialized Git repository
--Started on early game function
--Can render the board in the command line
--Asks for player input for moves
+-Initialized Git repository\
+-Started on early game function\
+-Can render the board in the command line\
+-Asks for player input for moves\
 
 ## 1/9/2026
--checks validity of player input
--Started method for main game loop
--while running 
-  -gets input from player
-  -adds input to the board
-  -draws board
-  -flips player
-  -repeats
+-checks validity of player input\
+-Started method for main game loop\
+-while running \
+  -gets input from player\
+  -adds input to the board\
+  -draws board\
+  -flips player\
+  -repeats\
