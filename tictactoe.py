@@ -42,9 +42,9 @@ def game_loop():
   game_board = empty_board
   print(draw_board(game_board))
   current_player = 0b0
-
+  end = True
   #   while game is not over continue
-  while True:
+  while end:
     print(f"Player {current_player +1} please make your move!")
 
     #   select a square to make your move
@@ -59,16 +59,26 @@ def game_loop():
 #   check if winning move
 #   else
 #   change turn to next player
-    current_player^=1
+    win = check_winner(game_board)
+    if win:
+       end = False
+       print(win + " Is The winner!")
+    elif check_draw(game_board):
+       print("Game is a draw!")
+       end = False
+    else:
+       current_player^=1
+
+
 
 
 #   if winning move end game, congratulate winnder
 ## | 1 | 2 | 3 |
 ## | 4 | 5 | 6 |
 ## | 7 | 8 | 9 |
-test_board = ["X", "O", "X",
-               "O", "X", "O", 
-               "O", "X", "O"]
+test_board = ["X", "O", "O",
+               "O", "X", "X", 
+               "X", "X", "O"]
 
 def check_winner(board):
   win_states = [[0, 1, 2], [3, 4, 5], [6, 7, 8], 
@@ -77,10 +87,16 @@ def check_winner(board):
   for a, b, c in win_states:
     if board[a] and board[a] == board[b] == board[c]:
       return board[a]
-  
   return None
 
-print(check_winner(test_board))
+# if drawing move end the game
+def check_draw(board):
+  if all(board) and not check_winner(board):
+     return True
+
+  return False
+  
+
 #define how turns will be played
 
 #getting player input
@@ -89,7 +105,13 @@ def get_move():
   #MOVE THESE TOO LINE TO THE MAIN LOOP FUNTION WHEN CONSTRUCTED, PRINT AT THE CHANGE OF A TURN
   # print("Hello Player 2(O's), please Choose your move on an Empty square: ")
   # print(draw_board(board))
-  player_move = int(input("Enter a number of where you would like to play: "))
+
+  try:
+          player_move = int(input("Enter a number of where you would like to play: "))
+  except ValueError as e:
+         print("Entered Character was not a number try again: ")
+         player_move = get_move()
+
   
   return int(player_move)
 
@@ -114,7 +136,6 @@ def move_valid(move, board):
 
 #make move
 def make_move(move, board, player):
-
   # can move this into the main loop after initialization
   # while not move_valid(move, board):
   #    move = get_move(board)
@@ -129,7 +150,7 @@ def make_move(move, board, player):
    
 # make_move(get_move(a_board), a_board, PLAYER_1)
 # print(draw_board(a_board))
-#game_loop()
+game_loop()
 
 #define how to calculate if a win or a draw has been played
 
