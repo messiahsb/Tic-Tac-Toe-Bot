@@ -11,11 +11,22 @@ and ideally will be working towards my own progressions. While I am following th
 -Asks for player input for moves\
 
 ## 1/9/2026
--checks validity of player input\
+-checks the validity of player input\
 -Started method for main game loop\
 -while running \
   -gets input from player\
   -adds input to the board\
   -draws board\
+
+## 1/11/2026
+-Added win functionality\
+-Completed main game loop\
+-cleaned up bugs
+-Completed engine for two player game
+
+## 1/13/2026
+-Cleaned up code, unnecessary comments, and such
+
+
   -flips player\
   -repeats\
