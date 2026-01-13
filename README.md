@@ -29,4 +29,4 @@ and ideally will be working towards my own progressions. While I am following th
 
 
   -flips player\
-  -repeats\
+  -repeats
