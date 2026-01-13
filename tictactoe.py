@@ -4,8 +4,6 @@ empty_board = [None, None, None, None, None, None, None, None, None]
 PLAYER_1 = 0
 PLAYER_2 = 1
 
-a_board = ["X", None, None, None, "X", None, None, "O", None]
-
 #draw board
 def new_board():
     return empty_board
@@ -76,9 +74,10 @@ def game_loop():
 ## | 1 | 2 | 3 |
 ## | 4 | 5 | 6 |
 ## | 7 | 8 | 9 |
-test_board = ["X", "O", "O",
-               "O", "X", "X", 
-               "X", "X", "O"]
+
+# test_board = ["X", "O", "O",
+#                "O", "X", "X", 
+#                "X", "X", "O"]
 
 def check_winner(board):
   win_states = [[0, 1, 2], [3, 4, 5], [6, 7, 8], 
@@ -96,21 +95,18 @@ def check_draw(board):
 
   return False
   
-
 #define how turns will be played
 
 #getting player input
 def get_move():
-  
   #MOVE THESE TOO LINE TO THE MAIN LOOP FUNTION WHEN CONSTRUCTED, PRINT AT THE CHANGE OF A TURN
   # print("Hello Player 2(O's), please Choose your move on an Empty square: ")
   # print(draw_board(board))
-
   try:
-          player_move = int(input("Enter a number of where you would like to play: "))
+    player_move = int(input("Enter a number of where you would like to play: "))
   except ValueError as e:
-         print("Entered Character was not a number try again: ")
-         player_move = get_move()
+    print("Entered Character was not a number try again: ")
+    player_move = get_move()
 
   
   return int(player_move)
