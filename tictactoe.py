@@ -99,8 +99,6 @@ def check_draw(board):
 
 #getting player input
 def get_move():
-  #MOVE THESE TOO LINE TO THE MAIN LOOP FUNTION WHEN CONSTRUCTED, PRINT AT THE CHANGE OF A TURN
-  # print("Hello Player 2(O's), please Choose your move on an Empty square: ")
   # print(draw_board(board))
   try:
     player_move = int(input("Enter a number of where you would like to play: "))
@@ -115,9 +113,6 @@ def get_move():
 
 #check if move is valid
 def move_valid(move, board):
-    #changed some of the logic to loop in make move, this function now purely checks validity
-   # while is_valid is False:
-
     is_valid = True
     if move < 1 or move > 9:
       print("Invalid move! Please enter a new one")
@@ -127,7 +122,7 @@ def move_valid(move, board):
       print(f"This spot is taken by {board[move-1]}, please choose a new one!")
       #move = int(input("Enter a number of where you would like to play: "))
       is_valid = False
-    #add statement to check if is integer
+
     return is_valid
 
 #make move
