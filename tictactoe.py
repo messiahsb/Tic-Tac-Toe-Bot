@@ -10,7 +10,7 @@ PLAYER_2 = 1
 
 #draw board
 def new_board():
-    return empty_board
+    return [None, None, None, None, None, None, None, None, None]
 
 ## | 1 | 2 | 3 |
 ## | 4 | 5 | 6 |
@@ -41,7 +41,7 @@ def draw_board(board):
 #define game loop
 
 def game_loop():
-  game_board = empty_board
+  game_board = new_board()
   print(draw_board(game_board))
   current_player = 0b0
   end = True
@@ -74,9 +74,11 @@ def game_loop():
     if win:
        end = False
        print(win + " Is The winner!")
+       return win
     elif check_draw(game_board):
        print("Game is a draw!")
        end = False
+       return "draw"
     else:
        current_player^=1
 
@@ -151,7 +153,17 @@ def make_move(move, board, player):
 
   return board
 
-game_loop()
+def play():
+  out = {"X":0, "O":0, "draw":0}
+  for i in range(100):
+     out[game_loop()]+=1
+  print(out)
+
+play()
+        
+        
+        
+    
 
 #define how to calculate if a win or a draw has been played
 
