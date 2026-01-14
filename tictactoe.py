@@ -1,7 +1,7 @@
 
 #initialize empty board
 from simpletttAI import *
-
+import sys
 
 empty_board = [None, None, None, None, None, None, None, None, None]
 
@@ -47,11 +47,18 @@ def game_loop():
   end = True
   #   while game is not over continue
   while end:
-    print(f"Player {current_player +1} please make your move!")
+    # print(f"Player {current_player +1} please make your move!")
 
     #   select a square to make your move
     #move = get_move()
-    move = winning_and_losingpos_ai(game_board, current_player)
+    if sys.argv[int(current_player)+1] == "random_ai":
+      move = randommove_ai(game_board, current_player)
+      print("AI Moves : ", move)
+    elif sys.argv[int(current_player)+1] == "winloseai":
+       move = winning_and_losingpos_ai(game_board, current_player)
+       print("AI Moves : ", move)
+    else:
+      move = human_player(game_board, current_player)
 
     while not move_valid(move, game_board):
       move = get_move()
@@ -144,9 +151,6 @@ def make_move(move, board, player):
 
   return board
 
-   
-# make_move(get_move(a_board), a_board, PLAYER_1)
-# print(draw_board(a_board))
 game_loop()
 
 #define how to calculate if a win or a draw has been played

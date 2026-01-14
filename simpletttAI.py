@@ -60,5 +60,14 @@ def winning_and_losingpos_ai(board, player):
             
     return randommove_ai(board, player)
 
+def human_player(board, player):
+    # print(draw_board(board))
+  print(f"Player {player +1} please make your move!")
+  try:
+    player_move = int(input("Enter a number of where you would like to play: "))
+  except ValueError as e:
+    print("Entered Character was not a number try again: ")
+    player_move = human_player(board, player)
 
-
+  
+  return int(player_move)
