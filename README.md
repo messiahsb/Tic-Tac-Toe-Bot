@@ -17,6 +17,8 @@ and ideally will be working towards my own progressions. While I am following th
   -gets input from player\
   -adds input to the board\
   -draws board\
+  -flips player\
+  -repeats
 
 ## 1/11/2026
 -Added win functionality\
@@ -26,7 +28,7 @@ and ideally will be working towards my own progressions. While I am following th
 
 ## 1/13/2026
 -Cleaned up code, unnecessary comments, and such
+-started with super basic "ai's"\
+--one that makes random moves, and one that heuristically looks for winning moves using conditionals
 
 
-  -flips player\
-  -repeats
