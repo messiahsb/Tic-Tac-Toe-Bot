@@ -1,4 +1,8 @@
+
 #initialize empty board
+from simpletttAI import *
+
+
 empty_board = [None, None, None, None, None, None, None, None, None]
 
 PLAYER_1 = 0
@@ -46,7 +50,9 @@ def game_loop():
     print(f"Player {current_player +1} please make your move!")
 
     #   select a square to make your move
-    move = get_move()
+    #move = get_move()
+    move = winning_and_losingpos_ai(game_board, current_player)
+
     while not move_valid(move, game_board):
       move = get_move()
 
