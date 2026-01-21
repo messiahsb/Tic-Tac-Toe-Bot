@@ -32,3 +32,10 @@ and ideally will be working towards my own progressions. While I am following th
 --one that makes random moves, and one that heuristically looks for winning moves using conditionals
 
 
+
+## 1/21/2026
+-Added MinMax AI\
+-need to properly interface it into engine, right now only plays player one\
+-wish me luck on that chess engine!
+
+
