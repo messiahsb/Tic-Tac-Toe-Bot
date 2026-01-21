@@ -5,8 +5,8 @@ import sys
 
 empty_board = [None, None, None, None, None, None, None, None, None]
 
-PLAYER_1 = 0
-PLAYER_2 = 1
+PLAYER_1 = sys.argv[1]
+PLAYER_2 = sys.argv[2]
 
 #draw board
 def new_board():
@@ -40,7 +40,7 @@ def draw_board(board):
 
 #define game loop
 
-def game_loop():
+def game_loop(player_one, player_two):
   game_board = new_board()
   print(draw_board(game_board))
   current_player = 0b0
@@ -51,14 +51,24 @@ def game_loop():
 
     #   select a square to make your move
     #move = get_move()
-    if sys.argv[int(current_player)+1] == "random_ai":
-      move = randommove_ai(game_board, current_player)
-      print("AI Moves : ", move)
-    elif sys.argv[int(current_player)+1] == "winloseai":
-       move = winning_and_losingpos_ai(game_board, current_player)
+    # if current_player == 0 and player_one == "random_ai":
+    #   move = randommove_ai(game_board, current_player)
+    #   print("AI Moves : ", move)
+    # elif current_player == 1 and player_two == "random_ai":
+    #   move = randommove_ai(game_board, current_player)
+    #   print("AI Moves : ", move)
+    # elif current_player == 0 and player_one == "winloseai":
+    #   move = winning_and_losingpos_ai(game_board, current_player)
+    #   print("AI Moves : ", move)
+    # elif current_player == 1 and player_two == "winloseai":
+    #   move = winning_and_losingpos_ai(game_board, current_player)
+    #   print("AI Moves : ", move)
+    if current_player == 0 and player_one == "minmax":
+       move = minimax_ai(game_board, current_player, current_player)
        print("AI Moves : ", move)
     else:
       move = human_player(game_board, current_player)
+
 
     while not move_valid(move, game_board):
       move = get_move()
@@ -153,15 +163,16 @@ def make_move(move, board, player):
 
   return board
 
-def play():
+def play(player_one, player_two):
   out = {"X":0, "O":0, "draw":0}
-  for i in range(100):
-     out[game_loop()]+=1
+  for i in range(1000):
+     out[game_loop(player_one, player_two)]+=1
   print(out)
 
-play()
+play(PLAYER_1,PLAYER_2)
         
-        
+##add sys.arg to play function arguments and game loop, 
+#in gameloop nested if current player if __ai then call that function for move, else call human
         
     
 
